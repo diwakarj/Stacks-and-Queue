@@ -1,0 +1,80 @@
+// stack implemention using linkedlist : source geeksforgeeks
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <iostream>
+
+
+using namespace std;
+
+struct stacknode {
+	int data;
+	struct stacknode *next;
+};
+
+struct stacknode * newnode(int data)
+{
+	struct stacknode * stacknode = (struct stacknode*)malloc(sizeof(struct stacknode));
+	stacknode->data = data;
+	stacknode->next = NULL;
+
+	return stacknode;
+}
+
+int isempty(struct stacknode * root)
+{
+	return !root;
+}
+
+
+void push(struct stacknode** root, int item)
+{
+	struct stacknode * node = newnode(item);
+	node->next = *root;
+	*root = node;
+
+	cout<< "item" << item << "pushed inside stack "<< endl;
+}
+
+int pop(struct stacknode ** root)
+{
+	if (isempty(*root))
+		return INT_MIN;
+
+	struct stacknode *temp = *root;
+	*root = (*root)->next;
+	     
+	int data = temp->data;
+	free(temp);
+
+	return data;
+}
+
+int peek(struct stacknode * root)
+{
+	if (isempty(root))
+		return INT_MIN;
+	return root->data;
+}
+
+
+int main()
+{
+	struct stacknode *root = NULL;
+
+	push(&root, 10);
+	push(&root, 20);
+	push(&root, 30);
+
+	cout << "item poped is " << pop(&root)<<endl;
+	cout << "top element is " << peek(root)<<endl;
+
+	getchar();
+
+	return 0;
+
+}
+*/
+
