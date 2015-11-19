@@ -1,0 +1,142 @@
+// implement getmin() fun in O(1) in Stack
+// source geeksforgeeks.org
+
+/*
+
+#include <iostream>
+
+using namespace std;
+
+class stack
+{
+private :
+	static const int max = 100;
+	int arr[max];
+	int top;
+
+public :
+	stack() { top = -1; }
+	bool isempty();
+	bool isfull();
+	int pop();
+	void push(int x);
+
+};
+
+
+bool stack::isempty()
+{
+	if (top == -1)
+		return true;
+	return false;
+
+}
+
+bool stack::isfull()
+{
+	if (top == max - 1)
+		return true;
+	else return false;
+}
+
+
+
+void stack::push(int a)
+{
+	if (isfull())
+	{
+		cout << "stack overflow" << endl;
+		abort();
+	}
+
+	top++;
+	arr[top] = a;
+}
+
+int stack::pop()
+{
+	if (isempty())
+	{
+		cout << "stack underflow" << endl;
+		abort();
+	}
+
+	int x = arr[top];
+	top--;
+	return x;
+}
+
+
+class specialstack : public stack
+{
+	stack min;
+
+public :
+	int pop();
+	void push(int x);
+	int getmin();
+
+};
+
+void specialstack::push(int x)
+{
+	if (isempty() == true)
+	{
+		stack::push(x);
+		min.push(x);
+	}
+	else
+	{
+		stack::push(x);
+		int y = min.pop();
+		min.push(y);
+
+		if (x < y)
+			min.push(x);
+	}
+}
+
+int specialstack::pop()
+{
+	int x = stack::pop();
+	int y = min.pop();
+
+	if (x != y)
+		min.push(y);
+
+	return x;
+}
+
+int specialstack::getmin()
+{
+	int x = min.pop();
+	min.push(x);
+
+	return x;
+
+}
+
+
+
+
+int main()
+{
+	specialstack s;
+
+	s.push(10);
+	s.push(20);
+	s.push(30);
+
+	cout << s.getmin() << endl;
+
+	s.push(7);
+
+	cout << s.getmin() << endl;
+
+	getchar();
+
+	return 0;
+}
+
+*/
+
