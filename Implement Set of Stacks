@@ -1,0 +1,179 @@
+// implement setofstack i.e stack of stack having O(1) operation for push pop.
+// source http://www.hawstein.com/posts/3.3.html
+
+
+#include <iostream>
+
+using namespace std;
+
+const int STACK_SIZE = 5;
+const int STACK_NUM = 3;
+
+class stack {
+
+	int * buf;
+	int top;
+	int capacity;
+
+public :
+
+	stack(int cap = STACK_NUM)
+	{
+		buf = new int[cap];
+		top = -1;
+		capacity = cap;
+	}
+
+	~stack()
+	{
+		delete[] buf;
+	}
+
+	void push(int x)
+	{
+		if (isfull())
+		{
+			cout << "stack overflow" << endl;
+
+			return;
+		}
+		buf[++top] = x;
+	}
+
+	bool isfull()
+	{
+		return top == capacity - 1;
+	}
+
+	bool isempty()
+	{
+		return top == -1;
+	}
+
+	int pop()
+	{
+		if (isempty())
+		{
+			cout << "stack underflow" << endl;
+			return 0;
+		}
+
+		int x = buf[top];
+
+		top--;
+
+		return x;
+
+	}
+
+	int peek()
+	{
+		int x = buf[top];
+			return x;
+	}
+
+
+};
+
+
+class setofstack {
+
+	stack *st;
+	int top;
+	int capacity;
+
+public :
+
+	setofstack(int cap = STACK_NUM)
+	{
+		st = new stack[cap];
+		top = 0;
+		capacity = cap;
+	}
+
+	~setofstack()
+	{
+		delete[] st;
+	}
+
+	void push(int v)
+	{
+		if (st[top].isfull())
+		{
+			cout << "stack num :" << top << "full" << endl;
+			top++;
+			
+		}
+		st[top].push(v);
+	}
+
+	int pop()
+	{
+		if (st[top].isempty())
+		{
+			cout << "stack num :" << top << "empty" << endl;
+			top--;
+		}
+		return st[top].pop();
+	}
+	
+	bool isempty()
+	{
+		if (top == 0)
+			return st[0].isempty();
+		else
+			return false;
+	}
+
+	bool isfull()
+	{
+		if (top == capacity - 1) return st[top].isfull();
+
+		else
+			return false;
+	}
+
+
+};
+
+
+
+int main()
+{
+
+	/*
+	stack s(2);
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	s.push(4);
+
+	cout << s.pop() << endl;
+
+	s.push(10);
+	s.push(9);
+
+	cout << s.pop() << endl;
+	*/
+
+	setofstack s1;
+	for (int i = 0; i<9; ++i) {
+		s1.push(i);
+	}
+
+
+
+	for (int i = 0; i<9; ++i) {
+		cout<<s1.pop()<<endl;
+	}
+
+
+
+	getchar();
+
+	return 0;
+
+}
+
+
+
